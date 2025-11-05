@@ -8,4 +8,4 @@
 <%
  addCount();
 %>
-<p>이 사이트 방문은 <%= pageCount %> 입니다.</p>
+		<p>이 사이트 방문은 <%= pageCount %> 입니다.</p>
