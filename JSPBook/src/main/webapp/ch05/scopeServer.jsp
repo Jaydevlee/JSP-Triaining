@@ -4,8 +4,11 @@
 <body>
 <%
     request.setCharacterEncoding("UTF-8");
+		// 한글 깨짐 방지
 
+		//ID 폼 입력값 req_id 변수에 저장
     String req_id = request.getParameter("id");
+  	//비밀번호 폼 입력값 req_pw 변수에 저장
     String req_pw = request.getParameter("passwd");
 
     // 전달된 값이 있을 때만 세션/애플리케이션에 반영
