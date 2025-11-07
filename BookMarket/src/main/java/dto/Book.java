@@ -2,7 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
-public class Book {
+public class Book implements Serializable {
 	private static final long serialVersionUID=-4274700572038677000L;
 	
 	private String bookId; 		//도서ID
