@@ -7,11 +7,13 @@
 		<%
 			request.setCharacterEncoding("utf-8");
 			String userId = request.getParameter("id");
-			String password = request.getParameter("password");
-			String[] hobby = request.getParameterValues("hobby");
+			String pw = request.getParameter("password");
+		if(userId.equals("관리자") && pw.equals("1234")) {
+			response.sendRedirect("response01_success.jsp");
+		} else {
+			response.sendRedirect("response01_failed.jsp");
+		}
 		%>
-		<p> 아이디 : <%=userId %>
-		<p> 비밀번호 : <%=password %>
-		<p> 취미: <%=hobby[0]%> <%=hobby[1]%>
+		
 	</body>
 </html>
