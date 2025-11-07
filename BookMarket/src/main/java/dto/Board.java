@@ -7,7 +7,7 @@ public class Board implements Serializable{
 	//상수
 	private static final long serialVersionUID = -4274700572038677000L;
 	//필드
-	private int no;			//책 ID
+	private int no;			//게시물번호
 	private String title;	//제목
 	private String content;	//내용
 	private String writer; 	//저자
@@ -17,7 +17,8 @@ public class Board implements Serializable{
 	public Board() {
 		super();
 	}
-	public Board(String title, String content, String writer, String regdate) {
+	public Board(int no, String title, String content, String writer, String regdate) {
+		this.no = no;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;

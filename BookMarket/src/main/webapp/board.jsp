@@ -20,7 +20,7 @@
 		
 		<!-- DAO에서 목록 불러오기 -->
 		<%
-    ArrayList<Board> listOfBoard = boardDAO.getAllBooks();
+    ArrayList<Board> listOfBoard = boardDAO.getAllBoards();
   	// JSTL forEach으로 변경하기 위해서 아래와 같이 setAttribute로 배열에 있는 데이터를 
   	// 안전하게 board.jsp로 가져와야 한다.
     request.setAttribute("listOfBoard", listOfBoard);
@@ -36,10 +36,10 @@
 			<c:forEach var="board" items="${listOfBoard}" varStatus="index">
 			<tbody>
 				<tr>
-					<td>${index.count}></td>
-					<td>${board.title}></td>
-					<td>${board.writer}></td>
-					<td>${board.regdate}></td>
+					<td>${index.count}</td>
+					<td><a href="./boardDetail.jsp?no=${board.getNo()}">${board.title}</a></td>
+					<td>${board.writer}</td>
+					<td>${board.regdate}</td>
 				</tr>
 				</tbody>
 			</c:forEach>

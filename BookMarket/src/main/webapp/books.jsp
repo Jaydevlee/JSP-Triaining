@@ -35,12 +35,12 @@
 	<c:forEach var="book" items="${listOfBooks}">
      	<div class="col-md-4">
        		<div class="h-100 p-2">	
-		
 				<h5><b>${book.name}</b></h5>
 				<p>${book.author}</p>
 				<br> ${book.publisher} | ${book.releaseDate}
 				<p> ${book.description.substring(0,60)}... </p>
-				<p>${book.unitPrice}원
+				<p>${book.unitPrice}원</p>
+				<p><a href="./book.jsp?id=${book.getBookId()}" class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a>
 			</div>	
 		</div>			
 	</c:forEach>
