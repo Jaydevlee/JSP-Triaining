@@ -10,8 +10,8 @@ public class Board implements Serializable{
 	private int no;			//게시물번호
 	private String title;	//제목
 	private String content;	//내용
-	private String writer; 	//저자
-	private String regdate;	//설명
+	private String writer; 	//작성자
+	private String regdate;	//게시일
 	
 	//생성자
 	public Board() {
