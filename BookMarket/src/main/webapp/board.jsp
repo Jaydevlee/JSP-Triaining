@@ -33,6 +33,9 @@
 			</tr>
 			</thead>
 			<!-- 자바 for문을 JSTL forEach 변경. -->
+			<!-- var: 반복시 사용할 변수 이름 -->
+			<!-- items: 반복할 대상 컬랙션 ${}는 JSP에서 전달받은 리스트 객체 -->
+			<!-- varStatus: 반복 상태를 담은 객체 -->
 			<c:forEach var="board" items="${listOfBoard}" varStatus="index">
 			<tbody>
 				<tr>

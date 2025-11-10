@@ -7,6 +7,11 @@ import dto.Book;
 public class BookRepository{
 	
 	private ArrayList<Book> listOfBooks = new ArrayList<Book>();
+	private static BookRepository instance = new BookRepository(); //싱글톤 만들기 new키워드와 private함께 사용
+	public static BookRepository getInstance() {
+		return instance;
+	}
+	
 	
 	public BookRepository() {
 	
@@ -59,6 +64,11 @@ public class BookRepository{
 		}
 		return bookById;
 	}
+	
+
+	public void addBook(Book book) {
+		listOfBooks.add(book);
+		}
 	
 }
 	

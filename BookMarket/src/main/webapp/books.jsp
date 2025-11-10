@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Book"%>
-<jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session" />
+<%@ page import="dao.BookRepository"%>
+
 
 
 <html>
 <head>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <title>도서 목록</title>
 </head>
 <body>
@@ -22,9 +22,10 @@
       </div>
     </div>
 	<%
+		BookRepository dao = BookRepository.getInstance();
 		// ArrayList에 있는 listOfBooks 변수를 forEach에 사용 못하는 이유는
 		// listOfBooks 변수가 지역변수이기 대문에, ${listOfBooks}에 인식하지 못함.
-		ArrayList<Book> listOfBooks = bookDAO.getAllBooks();
+		ArrayList<Book> listOfBooks = dao.getAllBooks();
 		// 따라서 아래와 같이 request로 저장하여 ${listOfBooks}에서도 사용할 수 있게 해야함.
 	  	// JSTL forEach으로 변경하기 위해서 아래와 같이 setAttribute로 배열에 있는 데이터를 
 	  	// 안전하게 book.jsp로 가져와야 한다.
@@ -38,7 +39,7 @@
 				<h5><b>${book.name}</b></h5>
 				<p>${book.author}</p>
 				<br> ${book.publisher} | ${book.releaseDate}
-				<p> ${book.description.substring(0,60)}... </p>
+				<p> ${book.description}... </p>
 				<p>${book.unitPrice}원</p>
 				<p><a href="./book.jsp?id=${book.getBookId()}" class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a>
 			</div>	
