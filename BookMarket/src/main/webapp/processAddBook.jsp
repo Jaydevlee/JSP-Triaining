@@ -1,22 +1,40 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import = "dto.Book" %>
 <%@ page import = "dao.BookRepository" %>
+<%@ page import="com.oreilly.servlet.*" %>
+<%@ page import="com.oreilly.servlet.multipart.*" %>
+<%@ page import="java.util.*" %>
 
 <% 
 	request.setCharacterEncoding("UTF-8");
 	
-	String bookId=request.getParameter("bookId");
-	String name=request.getParameter("name");
-	String unitPrice=request.getParameter("unitPrice");
+	//파일 업로드
+	String filename="";
+	String realFolder ="G:\\jsp_git\\JSP-Triaining\\BookMarket\\src\\main\\webapp\\resources\\images";
+	int maxSize= 5 * 1024 * 1024; // 최대 업로드 파일 크기 지정
+	String encType = "utf-8"; //인코딩 유형
+	
+	//이미지 업로드 위한 MutilpartRequest 객체 생성
+	MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+	
+	//도서 정보 자겨오기
+	String bookId=multi.getParameter("bookId");
+	String name=multi.getParameter("name");
+	String unitPrice=multi.getParameter("unitPrice");
 	//int price=Integer.paresInt(request.getParameter("unitPrice");
-	String author=request.getParameter("author");
-	String publisher=request.getParameter("publisher");
-	String releaseDate=request.getParameter("releaseDate");
-	String description=request.getParameter("description");
-	String category=request.getParameter("category");
-	String unitInStock=request.getParameter("unitInStock");
+	String author=multi.getParameter("author");
+	String publisher=multi.getParameter("publisher");
+	String releaseDate=multi.getParameter("releaseDate");
+	String description=multi.getParameter("description");
+	String category=multi.getParameter("category");
+	String unitInStock=multi.getParameter("unitInStock");
 	//long stock=Integer.paresInt(request.getParameter("unitInStock");
-	String condition=request.getParameter("condition");
+	String condition=multi.getParameter("condition");
+	
+	//파일 이름 가져오기
+	Enumeration files=multi.getFileNames();
+	String fname = (String) files.nextElement();
+	String fileName=multi.getFilesystemName(fname);
 	
 	int price;
 	
@@ -48,6 +66,8 @@
 	newBook.setCategory(category);
 	newBook.setUnitsInStock(stock);
 	newBook.setCondition(condition);
+	newBook.setFileName(fileName);
+	
 	
 	dao.addBook(newBook);
 	
