@@ -51,5 +51,6 @@
 	
 	dao.addBook(newBook);
 	
+	//redirect방식으로 서버에서 클라이언트(books.jsp)로 이동
 	response.sendRedirect("books.jsp");
 %>
