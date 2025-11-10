@@ -8,7 +8,8 @@
 </head>
 <body>
   <% 
-   String fileuploadPath="G:\\Upload";
+   //String fileuploadPath="G:\\Upload";
+   String fileuploadPath="C:\\Users\\tyu20\\upload";
    DiskFileUpload upload = new DiskFileUpload();
    List items = upload.parseRequest(request);
    Iterator params = items.iterator();
