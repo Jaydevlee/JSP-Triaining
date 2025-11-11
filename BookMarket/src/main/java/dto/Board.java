@@ -12,6 +12,8 @@ public class Board implements Serializable{
 	private String content;	//내용
 	private String writer; 	//작성자
 	private String regdate;	//게시일
+	private String fileName; 
+	
 	
 	//생성자
 	public Board() {
@@ -55,6 +57,12 @@ public class Board implements Serializable{
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

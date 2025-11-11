@@ -2,7 +2,7 @@
 <%@ page import="java.util.Date"%>
 <html >
 <head>    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./resources/bootstrap.min.css" rel="stylesheet" />
 	<title>Welcome</title>
 </head>
 <body>

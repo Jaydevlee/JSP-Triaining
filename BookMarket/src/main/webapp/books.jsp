@@ -5,7 +5,7 @@
 <%@ page import="dao.BookRepository"%>
 <html>
 <head>
- <link href="./resources/bootstrap.min.css" rel="stylesheet">
+ <link href="./resources/bootstrap.min.css" rel="stylesheet" />
 <title>도서 목록</title>
 </head>
 <body>
@@ -15,7 +15,12 @@
    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">도서목록</h1>
-        <p class="col-md-8 fs-4">BookList</p>      
+        <p class="col-md-8 fs-4">BookList</p> 
+        <div class="mb-3 row">
+					<div class="col-sm-offset-2 col-sm-10"> 
+						<a href="./addBook.jsp" class="btn btn-secondary">도서 등록 &raquo;</a> 
+					</div>
+				</div>     
       </div>
     </div>
 	<%
@@ -39,7 +44,7 @@
 				<br> ${book.publisher} | ${book.releaseDate}
 				<p> ${book.description}... </p>
 				<p>${book.unitPrice}원</p>
-				<p><a href="./book.jsp?id=${book.getBookId()}" class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a>
+				<p><a href="./book.jsp?id=${book.getBookId()}" class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a></p>
 			</div>	
 		</div>			
 	</c:forEach>

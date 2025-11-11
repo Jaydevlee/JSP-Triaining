@@ -10,7 +10,7 @@
 	
 	//파일 업로드
 	String filename="";
-	String realFolder ="G:\\jsp_git\\JSP-Triaining\\BookMarket\\src\\main\\webapp\\resources\\images";
+	String realFolder ="./resources/images/";
 	int maxSize= 5 * 1024 * 1024; // 최대 업로드 파일 크기 지정
 	String encType = "utf-8"; //인코딩 유형
 	
@@ -38,7 +38,7 @@
 	
 	int price;
 	
-	if(unitPrice.isEmpty()) {
+	if(unitPrice != null && unitPrice.isEmpty()) {
 		price = 0;
 	} else {
 		price=Integer.valueOf(unitPrice);
@@ -46,7 +46,7 @@
 	
 	long stock;
 	
-	if(unitInStock.isEmpty()) {
+	if(unitInStock != null && unitInStock.isEmpty()) {
 		stock=0;
 	} else {
 		stock=Long.valueOf(unitInStock);

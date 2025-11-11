@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="dto.Board"%>
+<%@ page import="dao.BoardRepository"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="boardDAO" class="dao.BoardRepository" scope="session" />
 
 <html>
 	<head>
 		<title>게시판</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="./resources/bootstrap.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="container py-4">
@@ -20,7 +21,8 @@
       
       <%
       	String no = request.getParameter("no");
-      	Board board = boardDAO.getBoardByNo(Integer.parseInt(no));
+      BoardRepository dao = BoardRepository.getInstance();
+      	Board board = dao.getBoardByNo(Integer.parseInt(no));
       %>
       <table class="table table-hover">
       	<tr>
@@ -32,7 +34,14 @@
       	</tr>
       	<tr>
       		<td>내용</td>
-      		<td><%= board.getContent()%></td>
+      		<td><%= board.getContent()%>
+      				<%String fileName=board.getFileName();
+      					if(fileName != null && !fileName.trim().isEmpty()){%>
+      					<br><img src="./resources/images/<%=board.getFileName() %>" style="width: 70%">
+      				<%
+      					}
+      				%>
+      		</td>
       	</tr>
       	<tr>
       	<td colspan="2">

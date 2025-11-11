@@ -6,7 +6,10 @@ import dto.Board;
 
 public class BoardRepository {
 	private ArrayList<Board> listOfBoard = new ArrayList<Board>();
-	
+	private static BoardRepository instance = new BoardRepository();
+	public static BoardRepository getInstance() {
+		return instance;
+	}
 	// 생성자에서 게시물을 생성 후 각각에 no를 부여
 	
 	public BoardRepository() {
@@ -36,6 +39,9 @@ public class BoardRepository {
 		}
 		return boardNo;
 	}
-
+	
+	public void addBoard(Board board) {
+		listOfBoard.add(board);
+	}
 }
 	

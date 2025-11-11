@@ -4,9 +4,9 @@
 	<title>Validation</title>
 	<script type="text/javascript">
 		function checkMember() {
-			let regExpId=/[a-zA-Z0-9]/;;
+			let regExpId=/^(?=.*[a-zA-Z])(?=.*\d)[a-z|A-Z\d]{5,20}$/;
 			let regExpName=/^[가=힣]*$/;
-			let regExpPw=/^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+			let regExpPw=/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!.@#$%^&*])[a-z|A-Z\d!@#$%^&*]{7,20}$/;
 			let regExpPhone=/^\d{3}-\d{3,4}-\d{4}$/;
 			let regExpEmail=/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 			
@@ -18,30 +18,30 @@
 			let phone=form.phone1.value +"-"+form.phone2.value+"-"+form.phone3.value;
 			let email=form.email.value;
 			
-			if(!regExmid.test(id)){
-				alert("아이디는 영대소문자, 숫자로만 입력할 수 있습니다.")
+			if(!regExpId.test(id)){
+				alert("아이디는 영문자와 숫자포함 5자이상 20자 이내여야 합니다.")
 				form.id.select();
-				return;
+				return false;
 			}
-			if(!regExmid.test(pw)){
-				alert("비밀번호는 최소 8자리 숫자 특수문자가 1개 이상 포함되어야 합니다.")
-				form.id.select();
-				return;
+			if(!regExpPw.test(pw)){
+				alert("PW는 영문자와 숫자, 특수문자를 포함한 7자이상 20자 이내여야 합니다.")
+				form.pw.select();
+				return false;
 			}
-			if(!regExmid.test(name)){
+			if(!regExpName.test(name)){
 				alert("이름은 한글만 입력가능 합니다.")
-				form.id.select();
-				return;
+				form.name.select();
+				return false;
 			}
-			if(!regExmid.test(id)){
+			if(!regExpPhone.test(phone)){
 				alert("연락처 양식이 올바르지 않습니다.")
-				form.id.select();
-				return;
+				form.phone1.select();
+				return false;
 			}
-			if(!regExmid.test(id)){
+			if(!regExpEmail.test(email)){
 				alert("이메일 양식을 확인해주세요.")
-				form.id.select();
-				return;
+				form.email.select();
+				return false;
 			}
 				form.submit();
 			}
@@ -64,7 +64,7 @@
 							-<input type="text" maxlength="4" size="4" name="phone3">
 		</p>
 		<p> 이메일 : <input type="text" name="email"></p>
-		<p><input type="submit" value="전송" onclick="checkMember()"></p>
+		<p><input type="submit" value="전송" onclick="return checkMember()"></p>
 	</form>
 </body>
 </html>

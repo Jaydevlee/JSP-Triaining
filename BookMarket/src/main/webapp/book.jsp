@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<title>도서 정보</title>
-		<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+		<link href="./resources/bootstrap.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="container py-4">

@@ -2,10 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Board"%>
-<jsp:useBean id="boardDAO" class="dao.BoardRepository" scope="session" />
+<%@ page import="dao.BoardRepository"%>
 <html>
 	<head>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="./resources/bootstrap.min.css" rel="stylesheet" />
 		<title>Board</title>
 	</head>
 	<body>
@@ -20,12 +20,13 @@
 		
 		<!-- DAO에서 목록 불러오기 -->
 		<%
-    ArrayList<Board> listOfBoard = boardDAO.getAllBoards();
+		BoardRepository dao = BoardRepository.getInstance(); //싱글톤
+    ArrayList<Board> listOfBoard = dao.getAllBoards();
   	// JSTL forEach으로 변경하기 위해서 아래와 같이 setAttribute로 배열에 있는 데이터를 
   	// 안전하게 board.jsp로 가져와야 한다.
     request.setAttribute("listOfBoard", listOfBoard);
   %>
-		
+		<p><a href="./addBoard.jsp" class="btn btn-secondary" role="button"> 글쓰기 &raquo;</a></p>
 		<table class="table table-hover">
 			<thead>
 			<tr>
@@ -34,13 +35,13 @@
 			</thead>
 			<!-- 자바 for문을 JSTL forEach 변경. -->
 			<!-- var: 반복시 사용할 변수 이름 -->
-			<!-- items: 반복할 대상 컬랙션 ${}는 JSP에서 전달받은 리스트 객체 -->
+			<!-- items: 반복할 대상 컬랙션 달러{}는 JSP에서 전달받은 리스트 객체 -->
 			<!-- varStatus: 반복 상태를 담은 객체 -->
 			<c:forEach var="board" items="${listOfBoard}" varStatus="index">
 			<tbody>
 				<tr>
 					<td>${index.count}</td>
-					<td><a href="./boardDetail.jsp?no=${board.getNo()}">${board.title}</a></td>
+					<td><a href="./boardDetail.jsp?no=${board.no}">${board.title}</a></td>
 					<td>${board.writer}</td>
 					<td>${board.regdate}</td>
 				</tr>
