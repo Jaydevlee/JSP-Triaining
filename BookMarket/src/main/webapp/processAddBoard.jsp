@@ -11,7 +11,7 @@ request.setCharacterEncoding("UTF-8");
 
 //파일 업로드
 String filename="";
-String realFolder ="./resources/images/";
+String realFolder ="G:\\jsp_git\\JSP-Triaining\\BookMarket\\src\\main\\webapp\\resources\\images";
 int maxSize= 5 * 1024 * 1024; // 최대 업로드 파일 크기 지정
 String encType = "utf-8"; //인코딩 유형
 

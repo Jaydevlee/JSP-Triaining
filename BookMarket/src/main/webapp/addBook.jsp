@@ -3,7 +3,7 @@
 <html>
 	<head>    
     <link href="./resources/bootstrap.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="./resources/js/validation.js"></script>
+    <!-- <script type="text/javascript" src="./resources/js/validation.js"></script> -->
 		<title>도서 등록</title>
 	</head>
 	<body>
