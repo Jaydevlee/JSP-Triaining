@@ -38,7 +38,7 @@
 	<c:forEach var="book" items="${listOfBooks}">
      	<div class="col-md-4">
        		<div class="h-100 p-2">	
-       		<img src="resources/images/${book.fileName}" style="width : 250; height : 350" />
+       		<img src="./resources/images/${book.fileName}" style="width : 250; height : 350" />
 				<h5><b>${book.name}</b></h5>
 				<p>${book.author}</p>
 				<br> ${book.publisher} | ${book.releaseDate}
