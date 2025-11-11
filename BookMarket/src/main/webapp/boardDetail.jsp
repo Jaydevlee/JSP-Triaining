@@ -2,7 +2,7 @@
 <%@ page import="dto.Board"%>
 <%@ page import="dao.BoardRepository"%>
 <%@ page import="java.util.ArrayList"%>
-<jsp:useBean id="boardDAO" class="dao.BoardRepository" scope="session" />
+
 
 <html>
 	<head>
@@ -37,7 +37,7 @@
       		<td><%= board.getContent()%>
       				<%String fileName=board.getFileName();
       					if(fileName != null && !fileName.trim().isEmpty()){%>
-      					<br><img src="./resources/images/<%=board.getFileName() %>" style="width: 70%">
+      					<br><img src="resources/images/<%=board.getFileName() %>" style="width: 70%">
       				<%
       					}
       				%>

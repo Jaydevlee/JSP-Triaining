@@ -11,7 +11,8 @@ request.setCharacterEncoding("UTF-8");
 
 //파일 업로드
 String filename="";
-String realFolder ="G:\\jsp_git\\JSP-Triaining\\BookMarket\\src\\main\\webapp\\resources\\images";
+String realFolder ="G:\\jsp_git\\JSP-Triaining\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BookMarket\\resources\\images";
+// 경로를 잘 확인하고 입력하자 임마
 int maxSize= 5 * 1024 * 1024; // 최대 업로드 파일 크기 지정
 String encType = "utf-8"; //인코딩 유형
 
