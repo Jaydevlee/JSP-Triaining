@@ -22,6 +22,7 @@
 	</security-constraint>
 	<!-- 인증 처리를 위한 로그인 페이지나 오류 페이지를 호출하는 데 사용 -->
 	<login-config>
+		<auth-method>FORM</auth-method>
 		<form-login-config>
 			<form-login-page>/ch10/login.jsp</form-login-page>
 			<form-error-page>/ch10/login_failed.jsp</form-error-page>
