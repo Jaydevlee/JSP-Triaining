@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+<!-- 웹 애플리케이션에 사용하는 역할 나열 -->
+	<security-role>
+		<description></description>
+		<role-name>admin</role-name>
+	</security-role>
+	<!-- 사용자의 요청 url에 대한 접근 권한을 정의하는데 사용 -->
+	<security-constraint>
+		<display-name>BookMarket Security</display-name>
+		<!-- 웹 자원에 대한 접근을 설정하는 요소 -->
+		<web-resource-collection>
+			<web-resource-name>BookMarket</web-resource-name>
+			<description></description>
+			<url-pattern>/addBook.jsp</url-pattern>
+		</web-resource-collection>
+		<!-- 권한이 부여된 사용자만이 웹 자원에 접근할 수 있도록 이름을 설정하는 요소 -->
+		<!-- auth-constraint요소를 생략하면 웹 서버는 사용자 인증을 요구하지 않고 사용자 요청을 승인 -->
+		<auth-constraint>
+			<description>권한 관리자명</description>
+			<role-name>admin</role-name>
+		</auth-constraint>
+		<!-- user-data=constraint 쿨라이언트와 서버 간에 데이터를 전송할 떄 데이터를 보호하는 방법을 설정하는 요소 -->
+	</security-constraint>
+	<!-- 인증 처리를 위한 로그인 페이지나 오류 페이지를 호출하는 데 사용 -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/login_failed.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+</web-app>
