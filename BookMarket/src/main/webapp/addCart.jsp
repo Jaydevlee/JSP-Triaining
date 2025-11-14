@@ -14,7 +14,6 @@
 	Book book=dao.getBookById(id);
 	if(book==null){
 		response.sendRedirect("exceptionNoBookId.jsp");
-		return;
 	}
 	
 	ArrayList <Book> goodsList = dao.getAllBooks();
@@ -26,7 +25,7 @@
 		}
 	}
 	
-	ArrayList<Book> list = (ArrayList<Book>)session.getAttribute("cartlist");
+	ArrayList<Book> list = (ArrayList<Book>) session.getAttribute("cartlist");
 	if(list==null){
 		list=new ArrayList<Book>();
 		session.setAttribute("cartlist", list);

@@ -40,7 +40,7 @@
     		</tr>
     		<%
     			int sum=0;
-    			ArrayList<Book> cartList=(ArrayList<Book>)session.getAttribute("cartlist");
+    			ArrayList<Book> cartList=(ArrayList<Book>) session.getAttribute("cartlist");
     			if (cartList==null){
     				cartList=new ArrayList<Book>();
     			}
@@ -54,7 +54,7 @@
 					 <td><%=book.getBookId()%>-<%=book.getName()%></td>
 					 <td><%=book.getUnitPrice()%></td>
 					 <td><%=book.getQuantity()%></td>
-					 <td><%=total%></td>
+					 <td><%=total%>원</td>
 					 <td><a href="./removeCart.jsp?id=<%=book.getBookId() %>" class="badge text-bg-danger">삭제</a></td>
 					</tr>
 					<%
