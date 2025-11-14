@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-	MultipartRequest multi = new MultipartRequest(request, "G:\\upload", 5*1024*1024, "utf-8", new DefaultFileRenamePolicy());
+	MultipartRequest multi = new MultipartRequest(request, "C:\\upload", 5*1024*1024, "utf-8", new DefaultFileRenamePolicy());
 	//이름과 제목 가져오기
 	String name1=multi.getParameter("name1");
 	String subject1=multi.getParameter("subject1");
