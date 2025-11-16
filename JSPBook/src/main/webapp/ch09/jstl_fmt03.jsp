@@ -14,5 +14,5 @@
 		<p><fmt:formatDate value="${now}" type="both" dateStyle="medium" timeStyle="medium" /></p>
 		<p><fmt:formatDate value="${now}" type="both" dateStyle="long" timeStyle="long" /></p>
 		<p><fmt:formatDate value="${now}" type="both" dateStyle="full" timeStyle="full" /></p>
-		<p><fmt:formatDate value="${now}" type="both" pattern="yyyy년MM월dd일HH시mm분ss초 E요일" /></p>
+		<p><fmt:formatDate value="${now}" type="both" pattern="yyyy년MM월dd일 HH시mm분ss초 E요일" /></p>
 </html>
