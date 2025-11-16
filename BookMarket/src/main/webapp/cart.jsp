@@ -56,6 +56,8 @@
 					 <td><%=book.getQuantity()%></td>
 					 <td><%=total%>원</td>
 					 <td><a href="./removeCart.jsp?id=<%=book.getBookId() %>" class="badge text-bg-danger">삭제</a></td>
+					 <td align="left"><a href="./deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger">삭제하기</a></td>
+					 <td align="left"><a href="./shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-danger">주문하기</a></td>
 					</tr>
 					<%
 					}
