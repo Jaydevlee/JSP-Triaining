@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ page import="java.sql.*" %>>
+<%@ page import="java.sql.*" %>
 <html>
 <head>
  <link href="./resources/bootstrap.min.css" rel="stylesheet" />

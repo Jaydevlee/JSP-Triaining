@@ -11,6 +11,7 @@
 	//파일 업로드
 	String filename="";
 	String realFolder ="G:\\jsp_git\\JSP-Triaining\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BookMarket\\resources\\images";
+	//String realFolder ="C:\\Users\\tyu20\\JSP\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BookMarket\\resources\\images";
 	int maxSize= 5 * 1024 * 1024; // 최대 업로드 파일 크기 지정
 	String encType = "utf-8"; //인코딩 유형
 	
