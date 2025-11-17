@@ -1,8 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Book"%>
-<%@ page import="dao.BookRepository"%>
+<%@ page import="java.sql.*" %>>
 <html>
 <head>
  <link href="./resources/bootstrap.min.css" rel="stylesheet" />
@@ -16,40 +13,40 @@
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">도서목록</h1>
         <p class="col-md-8 fs-4">BookList</p> 
-        <div class="mb-3 row">
-					<div class="col-sm-offset-2 col-sm-10"> 
-						<a href="./addBook.jsp" class="btn btn-secondary">도서 등록 &raquo;</a> 
+			</div>
+		</div>     
+  			<%@ include file="dbconn.jsp" %>
+  			<div class="row align-items-md-stretch text-center">  			
+				<%
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql="SELECT * FROM book";
+					pstmt=conn.prepareStatement(sql);
+					rs=pstmt.executeQuery();
+					
+					while(rs.next()){
+				%>
+				<div class="col-md-4">
+					<div class="h-100 p-2">
+						<img src="./resources/images/<%=rs.getString("b_filename") %>" style="width:250px; height:350px;"/>
+						<h5><b><%=rs.getString("b_name") %></b></h5>
+						<p><%=rs.getString("b_author") %></p>
+						<br><%=rs.getString("b_publisher") %> | <%=rs.getString("b_releaseDate") %>
+						<p><%=rs.getString("b_description").substring(0, 60) %></p>
+						<p><%=rs.getString("b_unitprice") %> 원</p>
+						<p><a href="./book.jsp?id=<%=rs.getString("b_id") %>" class="btn btn-secondary" role="button">상세 정보 &raquo;</a></p>
 					</div>
-				</div>     
-      </div>
-    </div>
-	<%
-		BookRepository dao = BookRepository.getInstance();
-		// ArrayList에 있는 listOfBooks 변수를 forEach에 사용 못하는 이유는
-		// listOfBooks 변수가 지역변수이기 대문에, ${listOfBooks}에 인식하지 못함.
-		ArrayList<Book> listOfBooks = dao.getAllBooks();
-		// 따라서 아래와 같이 request로 저장하여 ${listOfBooks}에서도 사용할 수 있게 해야함.
-	  	// JSTL forEach으로 변경하기 위해서 아래와 같이 setAttribute로 배열에 있는 데이터를 
-	  	// 안전하게 book.jsp로 가져와야 한다.
-		request.setAttribute("listOfBooks", listOfBooks);
-	%>
-      
-	 <div class="row align-items-md-stretch   text-center">
-	<c:forEach var="book" items="${listOfBooks}">
-     	<div class="col-md-4">
-       		<div class="h-100 p-2">	
-       		<img src="./resources/images/${book.fileName}" style="width : 250; height : 350" />
-				<h5><b>${book.name}</b></h5>
-				<p>${book.author}</p>
-				<br> ${book.publisher} | ${book.releaseDate}
-				<p> ${book.description}... </p>
-				<p>${book.unitPrice}원</p>
-				<p><a href="./book.jsp?id=${book.getBookId()}" class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a></p>
-			</div>	
-		</div>			
-	</c:forEach>
-	
-		</div>	
+					</div>
+					<%
+					}
+					if(rs!=null)
+						rs.close();
+					if(pstmt!=null)
+						pstmt.close();
+					if(conn!=null)
+						conn.close();
+					%>
+				</div>	
 		<%@ include file="footer.jsp"%>   
   </div>
 </body>

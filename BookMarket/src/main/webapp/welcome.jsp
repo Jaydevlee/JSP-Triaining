@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="row align-items-md-stretch   text-center">
+    <div class="row align-items-md-stretch text-center">
       <div class="col-md-12">
         <div class="h-100 p-5">
           <h3><%=tagline%></h3>     

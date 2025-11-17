@@ -4,8 +4,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
 <%@ include file="dbconn.jsp" %>
+<%
 
-<% 
 	request.setCharacterEncoding("UTF-8");
 	
 	//파일 업로드
@@ -52,26 +52,48 @@
 		stock=Long.valueOf(unitInStock);
 	}
 	
-	//db에 저장
 	PreparedStatement pstmt=null;
-	String sql="INSERT INTO book VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+	ResultSet rs=null;
+	
+	String sql="SELECT * FROM book WHERE b_id=?";
 	pstmt=conn.prepareStatement(sql);
-	pstmt.setString(1, bookId);
-	pstmt.setString(2, name);
-	pstmt.setString(3, unitPrice);
-	pstmt.setString(4, author);
-	pstmt.setString(5, description);
-	pstmt.setString(6, publisher);
-	pstmt.setString(7, category);
-	pstmt.setString(8, unitInStock);
-	pstmt.setString(9, releaseDate);
-	pstmt.setString(10, condition);
-	pstmt.setString(11, fileName);
-	pstmt.executeUpdate();
+	rs=pstmt.executeQuery();
 	
+	if(rs.next()){
+		if(fileName!=null) {
+			sql="UPDATE book SET b_name=?, b_unitPrice=?, b_author=?, b_description=?, b_publisher=?, b_category=?, b_unitInStock=?, b_releaseDate=?, b_condition=?, b_fileName=?, WHERE b_id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, unitPrice);
+			pstmt.setString(3, author);
+			pstmt.setString(4, description);
+			pstmt.setString(5, publisher);
+			pstmt.setString(6, category);
+			pstmt.setString(7, unitInStock);
+			pstmt.setString(8, releaseDate);
+			pstmt.setString(9, condition);
+			pstmt.setString(10, fileName);
+			pstmt.setString(11, bookId);
+			pstmt.executeUpdate();
+		} else {
+			sql="UPDATE book SET b_name=?, b_unitPrice=?, b_author=?, b_description=?, b_publisher=?, b_category=?, b_unitInStock=?, b_releaseDate=?, b_condition=?  WHERE b_id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, unitPrice);
+			pstmt.setString(3, author);
+			pstmt.setString(4, description);
+			pstmt.setString(5, publisher);
+			pstmt.setString(6, category);
+			pstmt.setString(7, unitInStock);
+			pstmt.setString(8, releaseDate);
+			pstmt.setString(9, condition);
+			pstmt.setString(10, bookId);
+		}
+	}
 	if(pstmt!=null)
-		 pstmt.close();
+		pstmt.close();
+	if(conn!=null)
+		conn.close();
 	
-	//redirect방식으로 서버에서 클라이언트(books.jsp)로 이동
-	response.sendRedirect("books.jsp");
+	response.sendRedirect("ediBook.jsp?edit=update");
 %>
