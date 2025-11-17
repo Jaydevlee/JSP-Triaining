@@ -33,30 +33,36 @@
     String sql = "SELECT * FROM book";
     pstmt=conn.prepareStatement(sql);
     rs=pstmt.executeQuery();
+    while(rs.next()){
    %>
-   <div class="col-md-4">
-		<div class="h-100 p-2 round-3">
-			<img src="./resources/images/<%=rs.getString("b_filename") %> style="width:250; height:350"/>
-			<h5><b><%=rs.getString("b_name") %></b></h5>
-						<p><%=rs.getString("b_author") %></p>
-						<br><%=rs.getString("b_publisher") %> | <%=rs.getString("b_releaseDate") %>
-						<p><%=rs.getString("b_description").substring(0, 60) %></p>
-						<p><%=rs.getString("b_unitprice") %> 원</p>
-						<p>
+   		<div class="col-md-4">
+				<div class="h-100 p-2 round-3">
+					<img src="./resources/images/<%=rs.getString("b_filename") %>" style="width:250px; height:350"/>
+					<h5><b><%=rs.getString("b_name") %></b></h5>
+							<p><%=rs.getString("b_author") %></p>
+							<br><%=rs.getString("b_publisher") %> | <%=rs.getString("b_releaseDate") %>
+							<p><%=rs.getString("b_description").substring(0, 60) %></p>
+							<p><%=rs.getString("b_unitprice") %> 원</p>
+							
+							<p>
 							<%
+    						
 								if(edit.equals("update")){
 							%>
 									<a href="./updateBook.jsp?id=<%=rs.getString("b_id")%>" class="btn btn-success" role="button"> 수정 &raquo;</a>
 							<% 
 								} else if (edit.equals("delete")){
 							%>
-							<a href="#" onclick="deleteConfirm('<%=rs.getString("b_id") %>')" class="btn btn-danger" role="button">삭제 &raquo;</a>
+								<a href="#" onclick="deleteConfirm('<%=rs.getString("b_id") %>')" class="btn btn-danger" role="button">삭제 &raquo;</a>
 							<%
 								}
 							%>
 						</p>
-   	</div>
-   </div>
+   				</div>
+   			</div>
+   			<%
+   			}
+   			%>
    <%
    if (rs!=null)
 	    rs.close();
