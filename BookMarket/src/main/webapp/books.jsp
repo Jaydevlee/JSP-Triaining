@@ -18,11 +18,14 @@
   			<%@ include file="dbconn.jsp" %>
   			<div class="row align-items-md-stretch text-center">  			
 				<%
+					//Java에서 SQL문을 실행하기 위한 인터페이스
 					PreparedStatement pstmt = null;
+					//DB에서 SELECT된 결과를 저장하기 위한 Java 인터페이스
 					ResultSet rs = null;
+					
 					String sql="SELECT * FROM book";
-					pstmt=conn.prepareStatement(sql);
-					rs=pstmt.executeQuery();
+					pstmt=conn.prepareStatement(sql); //sql문장과 DB(Oracle)과의 연결
+					rs=pstmt.executeQuery(); //Oracle에서 SQL문장을 실행 및 실행결과를 저장
 					
 					while(rs.next()){
 				%>

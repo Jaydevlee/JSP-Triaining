@@ -58,21 +58,24 @@
 	String sql="INSERT INTO book VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 	pstmt=conn.prepareStatement(sql);
 	pstmt.setString(1, bookId);
-	pstmt.setString(2, name);
+	pstmt.setInt(2, price);
 	pstmt.setString(3, unitPrice);
 	pstmt.setString(4, author);
 	pstmt.setString(5, description);
 	pstmt.setString(6, publisher);
 	pstmt.setString(7, category);
-	pstmt.setString(8, unitInStock);
+	pstmt.setLong(8, stock);
 	pstmt.setString(9, releaseDate);
 	pstmt.setString(10, condition);
 	pstmt.setString(11, fileName);
+	/*executeUpdate()메소드는 몇 건을 처리했는지에 대한 값을 저장하므로
+	  INSERT, UPDATE, DELETE 작업시 사용 */
 	pstmt.executeUpdate();
 	
 	if(pstmt!=null)
 		 pstmt.close();
-	
-	//redirect방식으로 서버에서 클라이언트(books.jsp)로 이동
+	if(conn!=null)
+		conn.close();
+	//INSERT가 끝난 redirect방식으로 서버에서 클라이언트(books.jsp)로 이동
 	response.sendRedirect("books.jsp");
 %>

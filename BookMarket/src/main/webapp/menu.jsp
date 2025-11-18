@@ -14,6 +14,7 @@
      	<li class="nav-item"><a href="./addBook.jsp" class="nav-link">도서 등록</a></li>
      	<li class="nav-item"><a href="./editBook.jsp?edit=update" class="nav-link">도서 수정</a></li>
      	<li class="nav-item"><a href="./editBook.jsp?edit=delete" class="nav-link">도서 삭제</a></li>
+     	<li class="nav-item"><a href="./board.jsp" class="nav-link">게시판</a></li>
      </ul>
    </div>
   </div>

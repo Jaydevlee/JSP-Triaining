@@ -22,14 +22,15 @@
     String bookId=request.getParameter("id");
    	PreparedStatement pstmt=null;
    	ResultSet rs=null;
-   	String sql="SELECT * FROM book";
+   	String sql="SELECT * FROM book WHERE b_id=?";
    	pstmt=conn.prepareStatement(sql);
+   	pstmt.setString(1, bookId);
    	rs=pstmt.executeQuery();
    	if(rs.next()){
    %>
    <div class="row align-items-md-stretch text-center">
    	<div class="col-md-5">
-   	<img src="./resources/images/<%=rs.getString("b_filename") %> alt="image" style="width:100%"/>
+   	<img src="./resources/images/<%=rs.getString("b_filename") %>" alt="image" style="width:100%"/>
    	</div>
    </div>
    <div class="col-md-7">

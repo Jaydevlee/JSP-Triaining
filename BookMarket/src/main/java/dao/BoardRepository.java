@@ -15,7 +15,7 @@ public class BoardRepository {
 	public BoardRepository() {
 		Board board1 = new Board(1, "자바 마스터 책 추천합니다.", "내용이 좋아요.", "홍길동", "2025-11-06");
 		Board board2 = new Board(2, "C# 프로그래밍 책 구성에 대해 건의 드립니다.", "내용이 좋아요.", "홍길동", "2025-11-06");
-		Board board3 = new Board(3, "파이썬 프로그래밍 내용이 알찹니다..", "내용이 좋아요.", "홍길동", "2025-11-06");
+		Board board3 = new Board(3, "파이썬 프로그래밍 내용이 알찹니다.", "내용이 좋아요.", "홍길동", "2025-11-06");
 		
 
 		listOfBoard.add(board1);
