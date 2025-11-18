@@ -94,7 +94,7 @@
 		</div>
 		<div class="mb-3 row">
 			<div class="col-sm-offset-2 col-sm-10">
-				<input type="submit" class="btn btn-primary" value="<fmt:message key ="button" />e" onclick="return CheckAddBook()"> <!-- 버튼 클릭하면 form action 실행 -->
+				<input type="submit" class="btn btn-primary" value="<fmt:message key ="button" />" onclick="return CheckAddBook()"> <!-- 버튼 클릭하면 form action 실행 -->
 			</div>
 		</div>
 		</form>
