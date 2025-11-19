@@ -32,7 +32,7 @@
 			driver="oracle.jdbc.driver.OracleDriver" 
 			user="bookmarket" password="bookmarket1234" />
 			<sql:query var="resultSet" dataSource="${dataSource}">
-			 SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_REGDATE FROM BOARD
+			 SELECT board_no, board_title, board_writer, board_regdate FROM BOARD ORDER BY board_no DESC
 			</sql:query>
 			<!-- 자바 for문을 JSTL forEach 변경. -->
 			<!-- var: 반복시 사용할 변수 이름 -->
@@ -43,9 +43,9 @@
 			<c:forEach var="board" items="${resultSet.rows}" varStatus="index">
 				<tr>
 					<td>${index.count}</td>
-					<td><a href="./boardDetail.jsp?no=${board.BOARD_NO}">${board.BOARD_TITLE}</a></td>
-					<td>${board.BOARD_WRITER}</td>
-					<td>${board.BOARD_REGDATE}</td>
+					<td><a href="./boardDetail.jsp?no=${board.board_no}">${board.board_title}</a></td>
+					<td>${board.board_writer}</td>
+					<td>${board.board_regdate}</td>
 				</tr>
 			</c:forEach>
 			</tbody>
