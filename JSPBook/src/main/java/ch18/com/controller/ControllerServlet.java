@@ -26,7 +26,7 @@ public class ControllerServlet extends HttpServlet {
 		boolean status = bean.validate();
 		
 		if(status) {
-			RequestDispatcher rd = request.getRequestDispatcher("mvc_sucess.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("mvc_success.jsp");
 			rd.forward(request, response);
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("mvc_error.jsp");

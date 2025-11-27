@@ -9,7 +9,7 @@
 <body>
 	<form method="post" action="ControllerServlet">
 		<p> 아이디: <input type="text" name="id"> </p>
-		<p> 비밀번호: <input type="password" name="id"> </p>
+		<p> 비밀번호: <input type="password" name="pw"> </p>
 		<p> <input type="submit" value="보내기"> </p>
 	</form>
 </body>
